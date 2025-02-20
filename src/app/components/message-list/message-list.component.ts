@@ -7,5 +7,5 @@ import { Message } from 'src/app/models/message.model';
   styleUrls: ['./message-list.component.scss'],
 })
 export class MessageListComponent {
-  @Input() messages!: Message[];
+  @Input() messages: Message[] = [];
 }

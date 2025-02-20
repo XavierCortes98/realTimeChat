@@ -1,0 +1,21 @@
+.user-list-container {
+  display: flex;
+  width: 250px;
+  height: 100%;
+  flex-shrink: 0;
+  border: 1px solid black;
+  flex-wrap: wrap;
+}
+
+.empty-users {
+  display: flex;
+  text-align: center;
+  color: #44546f;
+  font-style: oblique;
+  justify-content: center;
+}
+
+.user-list {
+  display: flex;
+  justify-content: center;
+}

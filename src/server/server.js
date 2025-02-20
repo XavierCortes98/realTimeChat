@@ -17,17 +17,37 @@ const connectedUsers = new Set();
 io.on("connection", (socket) => {
   console.log("cliente conectado: ", socket.id);
 
-  socket.on("join", (username) => {
+  socket.on("join", (username, callback) => {
     if (connectedUsers.has(username)) {
-      socket.emit("usernameError", "El nombre ya esta en uso, elige otro");
+      console.log("error");
+      return callback({
+        status: 401,
+        message: "El nombre ya está en uso, elige otro",
+      });
     } else {
       connectedUsers.add(username);
       socket.username = username;
+
+      io.emit("updateUsers", Array.from(connectedUsers.keys()));
+
       io.emit("userConnected", { user: username });
       console.log("user agregado", username);
     }
+    return callback({ status: 200, message: "Login correcto" });
+  });
 
-    io.emit("userConnected", { user: username, id: socket.id });
+  socket.on("message", ({ user, message }) => {
+    console.log(`Mensaje de ${user}: ${message}`);
+
+    io.emit("message", { user, message, timestamp: new Date() });
+  });
+
+  socket.on("disconnect", () => {
+    if (socket.username) {
+      connectedUsers.delete(socket.username);
+      io.emit("userDisconnected", { user: socket.username });
+      console.log("usuario borrado: ", socket.username);
+    }
   });
 });
 

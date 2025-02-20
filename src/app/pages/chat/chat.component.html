@@ -1,6 +1,10 @@
-<div>
+<div class="chat-container">
   <app-user-list></app-user-list>
-  <app-message-list [messages]="messages"></app-message-list>
-  <app-message-input></app-message-input>
-  <button mat-button (click)="login()">login</button>
+  <div class="d-flex flex-column w-100 px-5 py-3">
+    <app-message-list
+      [messages]="messages"
+      class="flex-grow-1"
+    ></app-message-list>
+    <app-message-input (message)="sendMessage($event)"></app-message-input>
+  </div>
 </div>

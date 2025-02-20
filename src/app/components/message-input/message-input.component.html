@@ -1,1 +1,13 @@
-<p>message-input works!</p>
+<div class="d-flex flex-row">
+  <label for="message">Introduce tu mensaje: </label>
+  <input
+    class="form-control align-center w-100"
+    type="text"
+    id="message"
+    [(ngModel)]="msg"
+    (keyup.enter)="sendMessage()"
+  />
+  <button mat-button (click)="sendMessage()">
+    <mat-icon>send</mat-icon>
+  </button>
+</div>

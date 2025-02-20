@@ -1,0 +1,22 @@
+<div class="p-2">
+  <h2>Inicio de sesion</h2>
+  <div *ngIf="errorMsg" class="w-100 justify-items-center">{{ errorMsg }}</div>
+  <mat-dialog-content>
+    <label for="username">Elige un nombre de usuario</label>
+    <input
+      type="text"
+      id="username"
+      class="form-control"
+      [(ngModel)]="username"
+    />
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      mat-raised-button
+      (click)="onConfirm()"
+      [disabled]="!username.trim()"
+    >
+      Chatear
+    </button>
+  </mat-dialog-actions>
+</div>
