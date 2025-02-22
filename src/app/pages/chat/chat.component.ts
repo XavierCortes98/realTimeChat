@@ -12,6 +12,7 @@ import { SocketService } from 'src/app/services/socket.service';
 export class ChatComponent implements OnInit {
   messages: Message[] = [];
   username: string = '';
+
   constructor(
     private dialog: MatDialog,
     private socketService: SocketService
@@ -28,7 +29,6 @@ export class ChatComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((user) => {
-      console.log('closed user: ', user);
       this.username = user;
     });
   }

@@ -1,10 +1,14 @@
 <div class="chat-container">
   <app-user-list></app-user-list>
-  <div class="d-flex flex-column w-100 px-5 py-3">
+  <div class="d-flex flex-column w-100 gap-3">
     <app-message-list
       [messages]="messages"
-      class="flex-grow-1"
+      class="flex-grow-1 message-container mx-5 my-3"
     ></app-message-list>
-    <app-message-input (message)="sendMessage($event)"></app-message-input>
+    <hr />
+    <app-message-input
+      class="mx-3 pb-3"
+      (message)="sendMessage($event)"
+    ></app-message-input>
   </div>
 </div>

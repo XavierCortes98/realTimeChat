@@ -1,12 +1,38 @@
-<div
-  class="user-list-container"
-  [ngStyle]="{ 'align-content': users.length ? 'flex-start' : 'center' }"
->
-  <div *ngIf="!users?.length" class="w-100">
-    <span class="empty-users">No hay usuarios conectados</span>
-  </div>
+<div class="user-list-container d-flex flex-column">
+  <h3 class="fs-5 py-4 header">Lista de usuarios</h3>
 
-  <div *ngIf="users?.length" class="w-100">
-    <span *ngFor="let user of users" class="user-list">{{ user }}</span>
+  <div class="d-flex flex-column gap-4">
+    <div class="list-header px-3 py-1">
+      <div class="d-flex flex-row align-items-center">
+        <span *ngIf="!showSearchUserInput">{{ users.length }}</span
+        >&nbsp;
+        <span *ngIf="!showSearchUserInput">Usuarios conectados </span>
+        <input
+          #searchInput
+          *ngIf="showSearchUserInput"
+          class="form-control"
+          type="text"
+          placeholder="Filtra usuarios"
+          [(ngModel)]="userToSearch"
+          (blur)="onInputBlur()"
+        />
+      </div>
+      <button
+        *ngIf="!showSearchUserInput"
+        mat-icon-button
+        class="d-flex align-items-center"
+        (click)="toggleSearchUserInput()"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+    <div
+      *ngFor="let user of users | filter : userToSearch"
+      class="user-list px-3"
+    >
+      <mat-icon>person</mat-icon>
+      <span>{{ user }}</span>
+    </div>
   </div>
 </div>

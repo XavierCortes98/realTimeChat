@@ -13,9 +13,11 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { FilterPipe } from './shared/filter.pipe';
 
 @NgModule({
   declarations: [
+    FilterPipe,
     MessageInputComponent,
     MessageListComponent,
     MessageItemComponent,

@@ -1,4 +1,4 @@
-<div class="d-flex flex-row">
+<div class="d-flex flex-row align-content-center">
   <label for="message">Introduce tu mensaje: </label>
   <input
     class="form-control align-center w-100"
@@ -7,7 +7,7 @@
     [(ngModel)]="msg"
     (keyup.enter)="sendMessage()"
   />
-  <button mat-button (click)="sendMessage()">
+  <button mat-icon-button class="d-flex" (click)="sendMessage()">
     <mat-icon>send</mat-icon>
   </button>
 </div>

@@ -32,6 +32,14 @@ export class SocketService {
     });
   }
 
+  listenForUserDisconnected(): Observable<{ user: string }> {
+    return new Observable((observer) => {
+      this.socket.on('userDisconnected', (data: { user: string }) => {
+        observer.next(data);
+      });
+    });
+  }
+
   getMessages(): Observable<Message> {
     return new Observable((observer) => {
       this.socket.on('message', (msg) => {
