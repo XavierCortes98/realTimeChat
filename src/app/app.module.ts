@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,7 +29,9 @@ import { FilterPipe } from './shared/filter.pipe';
     LoginComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     AppRoutingModule,
+    MatSidenavModule,
     MatButtonModule,
     MatDialogModule,
     BrowserModule,

@@ -2,6 +2,7 @@ import {
   AfterViewChecked,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -12,31 +13,40 @@ import { Subscription } from 'rxjs';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent implements OnInit, AfterViewChecked {
+export class UserListComponent implements OnInit, AfterViewChecked, OnDestroy {
   @ViewChild('searchInput') searchInput!: ElementRef;
-  private userDisconnectSub!: Subscription;
-  users: string[] = [];
+
+  private subscriptions: Subscription = new Subscription();
+
   showSearchUserInput = false;
+  users: string[] = [];
   userToSearch = '';
+
   constructor(private socketService: SocketService) {}
 
   ngOnInit(): void {
-    this.socketService.getConnectedUsers().subscribe((users) => {
-      this.users = users;
-    });
+    this.subscriptions.add(
+      this.socketService.getConnectedUsers().subscribe((users) => {
+        this.users = users;
+      })
+    );
 
-    this.userDisconnectSub = this.socketService
-      .listenForUserDisconnected()
-      .subscribe((data) => {
+    this.subscriptions.add(
+      this.socketService.listenForUserDisconnected().subscribe((data) => {
         const disconnectedUser = data.user;
         this.users = this.users.filter((user) => user !== disconnectedUser);
-      });
+      })
+    );
   }
 
   ngAfterViewChecked() {
     if (this.showSearchUserInput && this.searchInput) {
       this.searchInput.nativeElement.focus();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   onInputBlur(): void {

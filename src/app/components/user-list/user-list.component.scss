@@ -5,19 +5,10 @@
 .user-list-container {
   display: flex;
   width: 250px;
-  height: 100%;
-  flex-shrink: 0;
+  height: 100vh;
   background-color: rgb(77, 77, 252);
-  flex-wrap: wrap;
   box-shadow: 3px 0 3px rgba(0, 0, 0, 0.3);
   border-radius: 0px 8px 8px 0px;
-}
-
-.header {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  color: white;
 }
 
 .list-header {
@@ -27,17 +18,17 @@
   border-bottom: 1px solid white;
 }
 
-.empty-users {
-  display: flex;
-  text-align: center;
-  color: white;
-  font-style: oblique;
-  justify-content: center;
+.user-list {
+  flex-grow: 1;
+  overflow: hidden;
 }
 
-.user-list {
+.user-list:hover {
+  overflow: auto;
+}
+
+.user-item {
   display: flex;
-  color: white;
   width: 100%;
   justify-content: stretch;
 }

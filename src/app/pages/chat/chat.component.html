@@ -1,14 +1,35 @@
-<div class="chat-container">
-  <app-user-list></app-user-list>
-  <div class="d-flex flex-column w-100 gap-3">
-    <app-message-list
-      [messages]="messages"
-      class="flex-grow-1 message-container mx-5 my-3"
-    ></app-message-list>
-    <hr />
-    <app-message-input
-      class="mx-3 pb-3"
-      (message)="sendMessage($event)"
-    ></app-message-input>
-  </div>
-</div>
+<mat-sidenav-container class="chat-container">
+  <mat-sidenav
+    #sidenav
+    [mode]="isSmallScreen ? 'over' : 'side'"
+    [opened]="!isSmallScreen"
+    class="user-list-sidenav"
+  >
+    <app-user-list></app-user-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="chat-container">
+    <div class="user-list-collapsed">
+      <button
+        mat-icon-button
+        (click)="sidenav.toggle()"
+        *ngIf="isSmallScreen"
+        class="m-2"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <div class="d-flex flex-column w-100 gap-3">
+      <app-message-list
+        [messages]="messages"
+        class="flex-grow-1 message-container mx-5 my-3"
+      ></app-message-list>
+      <hr />
+      <app-message-input
+        class="mx-3 pb-3"
+        (message)="sendMessage($event)"
+      ></app-message-input>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

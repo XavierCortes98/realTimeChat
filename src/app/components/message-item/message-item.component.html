@@ -1,6 +1,6 @@
-<div>
-  <strong>{{ message.user }}:</strong>
-  <span>
+<div class="w-100 text-break text-wrap">
+  <strong [style.color]="getUserColor()">{{ message.user }}:</strong>
+  <p>
     {{ message.message }}
-  </span>
+  </p>
 </div>

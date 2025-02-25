@@ -1,6 +1,15 @@
 .chat-container {
   height: 100vh;
+  width: 100%;
   display: flex;
+}
+
+.user-list-collapsed {
+  height: 100%;
+  background-color: rgb(77, 77, 252);
+  button {
+    color: white;
+  }
 }
 
 .message-container {
