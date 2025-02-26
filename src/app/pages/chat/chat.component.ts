@@ -42,7 +42,6 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage(message: string) {
-    console.log(message);
     this.socketService.sendMessage(this.username, message);
   }
 }

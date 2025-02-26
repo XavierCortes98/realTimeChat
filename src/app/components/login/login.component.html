@@ -1,6 +1,8 @@
 <div>
   <h2 class="px-4 pt-3">Inicio de sesion</h2>
-  <div *ngIf="errorMsg" class="w-100">{{ errorMsg }}</div>
+  <div *ngIf="errorMsg" class="error px-4 pt-2 gap-1">
+    <mat-icon> error </mat-icon> {{ errorMsg }}
+  </div>
   <mat-dialog-content>
     <label for="username">Elige un nombre de usuario</label>
     <input

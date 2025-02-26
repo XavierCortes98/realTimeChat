@@ -40,8 +40,12 @@
     align="center"
     class="w-100 d-flex align-items-center justify-content-center"
   >
-    <span>Cerrar sesión</span>
-    <button mat-icon-button class="d-flex align-self-center">
+    <button
+      mat-button
+      class="d-flex align-self-center m-2"
+      (click)="reloadPage()"
+    >
+      <span>Cerrar sesión</span>
       <mat-icon>logout</mat-icon>
     </button>
   </div>

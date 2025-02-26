@@ -57,4 +57,8 @@ export class UserListComponent implements OnInit, AfterViewChecked, OnDestroy {
   toggleSearchUserInput() {
     this.showSearchUserInput = !this.showSearchUserInput;
   }
+
+  reloadPage() {
+    window.location.reload();
+  }
 }

@@ -1,5 +1,6 @@
 <div class="w-100 text-break text-wrap">
   <strong [style.color]="getUserColor()">{{ message.user }}:</strong>
+  <span class="time">{{ message.timestamp | date : " HH:mm:ss" }}</span>
   <p>
     {{ message.message }}
   </p>

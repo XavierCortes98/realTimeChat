@@ -1,0 +1,7 @@
+.input-label {
+  white-space: nowrap;
+  font-size: medium;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
